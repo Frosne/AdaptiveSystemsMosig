@@ -8,14 +8,19 @@ package aspects.logging;
  */
 public aspect LogAspect
 {
-
 	private pointcut printMethod():call ( void banking.Account.*(..));
 	
-	declare warning : printMethod() : "This method was overriden by AspectJ";
+	// Eclipse stuff?
+	declare warning : printMethod() : "This method was caught by AspectJ";
 	
+	//(a) Logging methods
 	before() : printMethod()
 	{
-		System.out.println("Im before methodcalling");
+		System.out.println("Method Signature: "+thisJoinPoint.getSignature());
+		// Just simply
+		System.out.println(thisJoinPoint);
+	
+		
 	}
 
 }
