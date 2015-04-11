@@ -1,5 +1,7 @@
 package aspects.logging;
 
+import java.util.logging.Logger;
+
 /**
  *  A logging aspect for the banking application.
  *
@@ -8,7 +10,8 @@ package aspects.logging;
  */
 public aspect LogAspect
 {
-	private pointcut printMethod():call ( void banking.Account.*(..));
+	static Logger logger = Logger.getLogger("trace");
+	private pointcut printMethod():call ( * banking.*.*(..));
 	
 	// Eclipse stuff?
 	declare warning : printMethod() : "This method was caught by AspectJ";
@@ -16,7 +19,8 @@ public aspect LogAspect
 	//(a) Logging methods
 	before() : printMethod()
 	{
-		System.out.println("Method Signature: "+thisJoinPoint.getSignature());
+		//delete comments, i just put it for comfort
+		//System.out.println("Method Signature: "+thisJoinPoint.getSignature());
 		// Just simply
 		System.out.println(thisJoinPoint);
 	
