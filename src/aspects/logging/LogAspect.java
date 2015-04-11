@@ -1,6 +1,7 @@
 package aspects.logging;
 
 import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  *  A logging aspect for the banking application.
@@ -22,7 +23,12 @@ public aspect LogAspect
 		//delete comments, i just put it for comfort
 		//System.out.println("Method Signature: "+thisJoinPoint.getSignature());
 		// Just simply
-		System.out.println(thisJoinPoint);
+		//System.out.println(thisJoinPoint);
+		
+		//According to tutorials log.log is used for exceptions
+		//	logger.log(Level.INFO,"Logger Event-> calling method: ", message);		
+		//https://docs.oracle.com/javase/7/docs/api/java/util/logging/Logger.html?is-external=true
+		logger.info("Method information: "+ thisJoinPoint.toString());
 	
 		
 	}
