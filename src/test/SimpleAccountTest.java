@@ -1,8 +1,10 @@
 package test;
 
+
 import banking.SimpleAccountImpl;
 import banking.InterAccountOperations;
 import banking.AccountException;
+import banking.*;
 
 /**
  *  A simple banking account test class.
@@ -12,10 +14,13 @@ import banking.AccountException;
  */
 public class SimpleAccountTest
 {
-	
+	 
 	public static void main(String[] args)
 		throws AccountException
 	{
+		
+		
+		
 		SimpleAccountImpl 	account1, account2;
 		int					accountNb1 = 1, accountNb2 = 2;
 		
