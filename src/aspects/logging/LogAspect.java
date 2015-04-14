@@ -3,6 +3,10 @@ package aspects.logging;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
+import org.apache.log4j.*;
+
+import java.util.logging.Logger;
+import java.util.logging.Level;
 /**
  *  A logging aspect for the banking application.
  *
@@ -12,6 +16,8 @@ import java.util.logging.Level;
 public aspect LogAspect
 {
 	static Logger logger = Logger.getLogger("trace");
+	private static final org.apache.log4j.Logger loggerA = LogManager.getLogger("HelloWorld");
+	
 	private pointcut printMethod():call ( * banking.*.*(..));
 	
 	// Eclipse stuff?
@@ -28,7 +34,11 @@ public aspect LogAspect
 		//According to tutorials log.log is used for exceptions
 		//	logger.log(Level.INFO,"Logger Event-> calling method: ", message);		
 		//https://docs.oracle.com/javase/7/docs/api/java/util/logging/Logger.html?is-external=true
+		
+		
 		logger.info("Method information: "+ thisJoinPoint.toString());
+		BasicConfigurator.configure();
+		loggerA.info("Method information: "+ thisJoinPoint.toString());
 	
 		
 	}
